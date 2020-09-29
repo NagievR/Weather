@@ -1,0 +1,31 @@
+.secondary-info-container, .wrapper {
+  display: flex;
+}
+
+.secondary-info-container {
+  width: 85%;
+  justify-content: space-between;
+}
+
+/* .wind, .humidity, .pressure, .visibility {
+
+}  */
+
+.wrapper {
+  display: flex;
+}
+
+.metric {
+  padding-top: 5px;
+  font-size: 12px;
+}
+
+.value { 
+  font-size: 30px;
+}
+
+@media screen and (max-width: 360px) {
+  .secondary-info-container {
+    width: 95%;
+  }
+}

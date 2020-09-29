@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;400;600&display=swap');
+
+.temperature-container, .widget, .outside-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.widget {
+  padding: 15px 0;
+  position: relative;
+  user-select: none;
+  font-family: 'Nunito', sans-serif;
+  font-size: 20px;
+  color: white;
+  background-color: rgb(39, 39, 39);
+  border-radius: 5px;
+  max-width: 500px;
+  min-width: 280px;
+  height: 360px;
+}
+
+/* reusable classes */
+  .thin-small-font {
+    font-weight: 200;
+    font-size: 18px;
+  }
+  .loading {
+    color: rgb(138, 138, 138);
+    font-size: 20px;
+  }
+
+.outside-description {
+  margin-top: -20px;
+}
+
+.update {
+  position: absolute;
+  right: 4%;
+  top: 20px;
+  cursor: pointer;
+}
+
+.upd-animation {
+  animation: .5s linear infinite rotate; 
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .update {
+    right: 2%;
+  }
+}

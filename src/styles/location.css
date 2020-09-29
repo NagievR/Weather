@@ -1,0 +1,63 @@
+.button, .location-input {
+  background-color:  rgb(39, 39, 39);
+  color: white;
+  font-size: medium;
+  border: none;
+}
+
+.change-location-form, .curr-location { 
+  display: flex;
+  justify-content: center;
+}
+
+.change-location-form {
+  user-select: text;
+  width: 80%;
+  height: 31px;
+  padding-bottom: 10px;
+}
+
+.curr-location {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 30px;
+}
+
+.button {
+  text-align: center;
+  width: 60px;
+  padding: 0;
+  cursor: pointer;
+  border: 1px white solid;
+  border-radius: 4px;
+  font-weight: 200;
+}
+
+.location-input {
+  outline: none;
+  margin-right: 5px;
+}
+
+.city-inp {
+  width: 50%;
+}
+
+.coutry-inp {
+  width: 15%;
+}
+
+/* input animation */
+.location-input {
+  background-image: 
+    linear-gradient(0deg,white 2px,rgba(0, 0, 0, 0) 0),
+    linear-gradient(0deg,gray 2px,rgba(0, 0, 0, 0) 0);
+
+  background-size: 0% 100%, 100% 100%;
+  background-repeat: no-repeat;
+  transition: all .5s ease;
+}
+
+input:focus {
+  background-size: 100% 100%, 100% 100%;
+}

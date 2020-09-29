@@ -1,0 +1,12 @@
+.current {
+  font-size: 70px;
+  font-weight: 600;
+}
+
+.feels-like {
+  background-color: rgba(61, 61, 61, 0.795);
+  border-radius: 5px;
+  margin-top: -10px;
+  width: 160px;
+  text-align: center;
+}
