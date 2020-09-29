@@ -99,7 +99,7 @@ ReactDOM.render(
 async function getWeather(city, country = '') {
   let data;
   try {
-    let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},${country}${METRIC_CELSIUS}&appid=${API_KEY}`);
+    let response = await fetch(`fail.com`); // https://api.openweathermap.org/data/2.5/weather?q=${city},${country}${METRIC_CELSIUS}&appid=${API_KEY}
     data = await response.json();
 
     if (data.cod >= 400 || !data) {
