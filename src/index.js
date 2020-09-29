@@ -99,7 +99,6 @@ ReactDOM.render(
 async function getWeather(city, country = '') {
   let data;
   try {
-    console.log(`https://api.openweathermap.org/data/2.5/weather?q=${city},${country}${METRIC_CELSIUS}&appid=${API_KEY}`);
     let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},${country}${METRIC_CELSIUS}&appid=${API_KEY}`);
     data = await response.json();
 
