@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {useState, useRef, useEffect} from 'react';
-import WeatherWidget from './components/weather-widget.js'
+import WeatherWidget from './src/components/weather-widget.js'
 
 const API_KEY = 'e8afc68129142e12abe4457ecd337411';
 const METRIC_CELSIUS = '&units=metric';
