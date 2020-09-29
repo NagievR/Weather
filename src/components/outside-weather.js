@@ -1,6 +1,6 @@
 import React from 'react';
 
-const WEATHER_ICONS_SRC = 'http://openweathermap.org/img/wn/';
+const WEATHER_ICONS_SRC = 'https://openweathermap.org/img/wn/';
 const PLACEHOLDER_SRC = 'https://i.ibb.co/QMmS8X9/arrow-big.png';
 
 export default function OutsideWeater(props) {
