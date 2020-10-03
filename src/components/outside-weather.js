@@ -1,19 +1,18 @@
 import React from 'react';
 
-const WEATHER_ICONS_SRC = 'https://openweathermap.org/img/wn/';
-const PLACEHOLDER_SRC = 'https://i.ibb.co/QMmS8X9/arrow-big.png';
-
 export default function OutsideWeater(props) {
+  const weatherIconsSrc = 'https://openweathermap.org/img/wn/';
+  const placeholderSrc = 'https://i.ibb.co/QMmS8X9/arrow-big.png';
   let description = props.description;
   let src;
   let updating;
 
   if (!props.description) {
-    src = PLACEHOLDER_SRC;
+    src = placeholderSrc;
     updating = 'upd-animation';
     description = 'loading...'
   } else {
-    src = createSrc(props.iconId);
+    src = weatherIconsSrc + props.iconId + '@2x.png';
   }
 
   return ( 
@@ -29,8 +28,4 @@ export default function OutsideWeater(props) {
       </div>
     </div>
   )
-}
-
-function createSrc(icon) {
-  return WEATHER_ICONS_SRC + icon + '@2x.png';
 }
