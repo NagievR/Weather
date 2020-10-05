@@ -3,7 +3,7 @@ import CurrentLocation from './current-location';
 import ChangeLocationForm from './change-location.js';
 import {useState} from 'react';
 
-import '../styles/location.css';
+import '../../styles/location.css';
 
 export default function Location(props) {
   const [showForm, setShowForm] = useState(false);

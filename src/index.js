@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {useState, useRef, useEffect} from 'react';
 import WeatherWidget from './components/weather-widget.js'
+import {AlertProvider, useAlert} from './components/alert-provider.js';
 
 const API_KEY = 'e8afc68129142e12abe4457ecd337411';
 const METRIC_CELSIUS = '&units=metric';
@@ -27,15 +28,13 @@ function App() {
   const previousLocation = useRef(initialStateOfData); 
   const city = useRef('London');
   const country = useRef('GB');
-
-  const [alertIsOpen, setAlertIsOpen] = useState(false);
-  const [alertText, setAlertText] = useState();
+  const showAlert = useAlert().showAlert;
 
   useEffect(() => {
     // Show the initial location after the first render only
     doRequest(city.current, country.current);
     // eslint-disable-next-line
-  }, []); 
+  }, []);
 
   function doRequest(currCity, currCountry) {
     notifyDataIsLoading();
@@ -47,7 +46,7 @@ function App() {
         setData(prevWeather => prevWeather = weather);
       },
       error => {
-        createAlert(error.message);
+        showAlert(error);
         setData(previousLocation.current);
       });
   }
@@ -68,31 +67,21 @@ function App() {
     setData(dataCopy);
   }
 
-  function createAlert(message) {
-    setAlertText(message);
-    setAlertIsOpen(true);
-  }
-  const alertSettings = {
-    isOpen: alertIsOpen,
-    text: alertText,
-    set: setAlertIsOpen,
-    createAlert: createAlert,
-  };
-
   return (
     <WeatherWidget
       data={data}
       updateWeather={doRequest}
       changeLocation={handleLocationChange}
-      alert={alertSettings}
     />
   ) 
 }
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <AlertProvider>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </AlertProvider>,
   document.getElementById('root')
 );
 

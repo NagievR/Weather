@@ -1,25 +1,29 @@
 import React from 'react';
+import {useAlert} from './alert-provider.js';
+
 import '../styles/alert.css';
 
 export default function Alert(props) {
   const closeButtonSrc = 'https://i.ibb.co/V2fTC1Q/allert-close-button.png';
+  const sets = useAlert().settings;
+  console.log(sets);
 
-  const show = props.alert.isOpen;
+  const show = sets.isShow;
   if (!show) {
+    console.log('CANC alert');
     return null;
   }
 
-  const message = props.alert.text;
-  const closeAlertFunc = props.alert.set;
-
+  console.log('alert!');
+  
   function closeAlert(event) {
     const targClass = event.target.className;
-    if ( targClass === 'close-icon' 
-      || targClass === 'close-button' 
-      /*|| targClass === 'alert-wrapper'*/ ) {
-      closeAlertFunc(false);
+    if (targClass === 'close-icon' || targClass === 'close-button') {
+      sets.close(false);
     }
   }
+
+  const message = sets.message;
 
   return (
     <div className='alert-wrapper' onClick={closeAlert}>

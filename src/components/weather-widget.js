@@ -6,7 +6,7 @@ import Temperature from './temperature.js';
 import OutsideWeater from './outside-weather.js';
 import SecondaryInfo from './secondary-info.js';
 import Update from './update.js';
-import Location from './location.js'
+import Location from './location/location.js'
 import Alert from './alert';
 
 export default function WeatherWidget(props) {
