@@ -15,7 +15,7 @@ export default function Alert() {
   function closeAlert(event) {
     const targClass = event.target.className;
     if (targClass === 'close-icon' || targClass === 'close-button') {
-      settings.close(false);
+      settings.close();
     }
   }
 

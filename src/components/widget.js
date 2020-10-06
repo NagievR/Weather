@@ -9,7 +9,7 @@ import OutsideWeater from './outside-weather.js';
 import SecondaryInfo from './secondary-info.js';
 import Alert from './alert/alert.js';
 
-export default function WeatherWidget(props) {
+export default function Widget(props) {
   const data = props.data;
   return (
     <div className='widget'>

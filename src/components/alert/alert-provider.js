@@ -21,7 +21,7 @@ export function AlertProvider({children}) {
       settings: {
         isShow: isShow,
         message: message,
-        close: setIsShow,
+        close: () => setIsShow(false),
       }
     }}>{children}</AlertContext.Provider>
   )

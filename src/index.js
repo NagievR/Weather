@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {useState, useRef, useEffect} from 'react';
-import WeatherWidget from './components/weather-widget.js'
+import Widget from './components/widget.js'
 import {AlertProvider, useAlert} from './components/alert/alert-provider.js';
 
 const API_KEY = 'e8afc68129142e12abe4457ecd337411';
@@ -68,7 +68,7 @@ function App() {
   }
 
   return (
-    <WeatherWidget
+    <Widget
       data={data}
       updateWeather={doRequest}
       changeLocation={handleLocationChange}
