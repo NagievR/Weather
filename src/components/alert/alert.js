@@ -1,10 +1,10 @@
 import React from 'react';
 import {useAlert} from './alert-provider.js';
 
+import closeBtnImg from '../../assets/images/allert-close-button.png'
 import '../../styles/alert.css';
 
 export default function Alert() {
-  const closeButtonSrc = 'https://i.ibb.co/V2fTC1Q/allert-close-button.png';
   const {settings} = useAlert();
 
   const show = settings.isShow;
@@ -26,7 +26,7 @@ export default function Alert() {
       <div className='alert'>
         <div className='header'>
           <button className='close-button' onClick={closeAlert} >
-            <img className='close-icon' src={closeButtonSrc} alt='close' />
+            <img className='close-icon' src={closeBtnImg} alt='close' />
           </button>
         </div>
         <div className='body'>

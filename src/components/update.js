@@ -1,8 +1,8 @@
 import React from 'react';
 import {useAlert} from './alert/alert-provider.js';
+import updateBtnImg from '../assets/images/update.png';
 
 export default function Update(props) {
-  const updatingImgSrc = 'https://i.ibb.co/bddFczT/small.png';
   const {showAlert} = useAlert();
 
   let nameForClass = 'update';
@@ -24,7 +24,7 @@ export default function Update(props) {
 
   return (
     <img
-      src={updatingImgSrc}
+      src={updateBtnImg}
       style={{height:'20px', width:'20px'}}
       className={nameForClass} 
       alt='update'

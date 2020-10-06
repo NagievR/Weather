@@ -1,14 +1,14 @@
 import React from 'react';
+import loadingBtnImg from '../assets/images/loading.png';
 
 export default function OutsideWeater(props) {
   const weatherIconsSrc = 'https://openweathermap.org/img/wn/';
-  const placeholderSrc = 'https://i.ibb.co/QMmS8X9/arrow-big.png';
   let description = props.description;
   let src;
   let updating;
 
   if (!props.description) {
-    src = placeholderSrc;
+    src = loadingBtnImg;
     updating = 'upd-animation';
     description = 'loading...'
   } else {
