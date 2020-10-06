@@ -15,7 +15,7 @@
 
 .alert {
   background-color: rgba(231, 230, 230, 0.98);
-  border: #ff7142  2px solid;
+  border: #ff7142  1px solid;
   padding: 10px 10px;
   position: relative;
   min-width: 50%;
@@ -41,7 +41,6 @@
 .close-button > img {
   height: 20px;
   width: 20px;
-  /* padding-top: 2px; */
 }
 
 .body {

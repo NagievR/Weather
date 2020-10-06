@@ -1,10 +1,9 @@
 import React from 'react';
-import {AlertProvider, useAlert} from './alert-provider.js';
+import {useAlert} from './alert/alert-provider.js';
 
 export default function Update(props) {
   const updatingImgSrc = 'https://i.ibb.co/bddFczT/small.png';
   const {showAlert} = useAlert();
-  console.log(showAlert);
 
   let nameForClass = 'update';
   if (!props.isLoaded) {

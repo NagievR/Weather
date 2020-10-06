@@ -1,7 +1,7 @@
 import React from 'react';
 import {useState, useContext} from 'react';
 
-const AlertContext = React.createContext(false);
+const AlertContext = React.createContext();
 export function useAlert() {
   return useContext(AlertContext);
 };
@@ -23,8 +23,6 @@ export function AlertProvider({children}) {
         message: message,
         close: setIsShow,
       }
-    }}>
-      {children}
-    </AlertContext.Provider>
+    }}>{children}</AlertContext.Provider>
   )
 }

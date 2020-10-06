@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {useState, useRef, useEffect} from 'react';
 import WeatherWidget from './components/weather-widget.js'
-import {AlertProvider, useAlert} from './components/alert-provider.js';
+import {AlertProvider, useAlert} from './components/alert/alert-provider.js';
 
 const API_KEY = 'e8afc68129142e12abe4457ecd337411';
 const METRIC_CELSIUS = '&units=metric';
@@ -28,7 +28,7 @@ function App() {
   const previousLocation = useRef(initialStateOfData); 
   const city = useRef('London');
   const country = useRef('GB');
-  const showAlert = useAlert().showAlert;
+  const {showAlert} = useAlert();
 
   useEffect(() => {
     // Show the initial location after the first render only
@@ -46,7 +46,7 @@ function App() {
         setData(prevWeather => prevWeather = weather);
       },
       error => {
-        showAlert(error);
+        showAlert(error.message);
         setData(previousLocation.current);
       });
   }
@@ -77,11 +77,11 @@ function App() {
 }
 
 ReactDOM.render(
-  <AlertProvider>
-    <React.StrictMode>
+  <React.StrictMode>
+    <AlertProvider>
       <App />
-    </React.StrictMode>
-  </AlertProvider>,
+    </AlertProvider>
+  </React.StrictMode> ,
   document.getElementById('root')
 );
 

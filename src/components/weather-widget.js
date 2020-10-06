@@ -1,17 +1,16 @@
 import React from 'react';
 import '../styles/index.css';
 
+import Location from './location/location.js'
+import Update from './update.js';
 import DateTime from './date-time.js';
 import Temperature from './temperature.js';
 import OutsideWeater from './outside-weather.js';
 import SecondaryInfo from './secondary-info.js';
-import Update from './update.js';
-import Location from './location/location.js'
-import Alert from './alert';
+import Alert from './alert/alert.js';
 
 export default function WeatherWidget(props) {
   const data = props.data;
-
   return (
     <div className='widget'>
       <Location
@@ -24,14 +23,24 @@ export default function WeatherWidget(props) {
         country={data.country} 
         updateWeather={props.updateWeather} 
         isLoaded={data.dataIsLoaded}
-        alert={props.alert}
       />
-      <DateTime shiftUTC0={data.date} isLoaded={data.dataIsLoaded}/>
-      <Temperature temp={data.temp} feels={data.feelsLike} />
-      <OutsideWeater iconId={data.iconId} description={data.description} />
+      <DateTime 
+        shiftUTC0={data.date} 
+        isLoaded={data.dataIsLoaded}
+      />
+      <Temperature 
+        temp={data.temp} 
+        feels={data.feelsLike} 
+      />
+      <OutsideWeater 
+        iconId={data.iconId} 
+        description={data.description}
+      />
+
       <hr width='90%' size='1' color='#4f4f4f' />
+
       <SecondaryInfo info={data.secondaryInfo} /> 
-      <Alert alert={props.alert} />
+      <Alert />
     </div>
   );
 }
