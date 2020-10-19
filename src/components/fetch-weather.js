@@ -30,9 +30,22 @@ export function FetchWeather() {
   const country = useRef('GB');
   const {showAlert} = useAlert();
 
+  // find the user location or use the initial location
   useEffect(() => {
-    // Show the initial location after the first render only
-    doRequest(city.current, country.current);
+    fetch('http://ip-api.com/json/?fields=countryCode,city')
+      .then(response => response.json())
+      .then(location => {
+          if (!location.city && !location.countryCode) {
+            showAlert('We didn`t find your location. Use the search, please.');
+            throw Error ('cant find "city" and "countryCode"');
+          }
+          city.current = location.city;
+          country.current = location.countryCode
+        })
+      .catch(error => {
+          console.log(error);
+        })
+      .then(() => doRequest(city.current, country.current));
   }, []);
 
   function doRequest(currCity, currCountry) {
