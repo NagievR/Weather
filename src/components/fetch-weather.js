@@ -4,8 +4,6 @@ import {useState, useRef, useEffect} from 'react';
 import Widget from './widget.js'
 import {useAlert} from './alert/alert-provider.js';
 
-const API_KEY = 'e8afc68129142e12abe4457ecd337411';
-const METRIC_CELSIUS = '&units=metric';
 const initialStateOfData = {
   country: null, 
   city: null, 
@@ -26,23 +24,27 @@ const initialStateOfData = {
 export function FetchWeather() {
   const [data, setData] = useState(initialStateOfData); 
   const previousLocation = useRef(initialStateOfData); 
-  const city = useRef('London');
-  const country = useRef('GB');
+  const city = useRef();
+  const country = useRef();
   const {showAlert} = useAlert();
 
-  // find the user location or use the initial location
+  // find the user location or show the initial location
   useEffect(() => {
-    fetch('http://ip-api.com/json/?fields=countryCode,city')
+    const apiKey = '71992fbe82d6843321c59d1a912172b9d33c31c48a914070fe221b64';
+
+    fetch(`https://api.ipdata.co/?api-key=${apiKey}`)
       .then(response => response.json())
       .then(location => {
-          if (!location.city && !location.countryCode) {
+          if (!location.city || !location.country_code) {
             throw Error ('cant find "city" and "countryCode"');
           }
           city.current = location.city;
-          country.current = location.countryCode
+          country.current = location.country_code;
         })
       .catch(error => {
           showAlert('We didn`t find your location. Use the search, please.');
+          city.current = 'London';
+          country.current = 'GB';
           console.log(error);
         })
       .then(() => doRequest(city.current, country.current));
@@ -89,9 +91,12 @@ export function FetchWeather() {
 }
 
 async function getWeather(city, country = '') {
+  const apiKey = 'e8afc68129142e12abe4457ecd337411';
+  const celcius = '&units=metric';
+
   let data;
   try {
-    let response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}${METRIC_CELSIUS}&appid=${API_KEY}`);
+    let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},${country}${celcius}&appid=${apiKey}`);
     data = await response.json();
 
     if (data.cod >= 400 || !data) {

@@ -2,7 +2,7 @@ import React from 'react';
 import loadingBtnImg from '../assets/images/loading.png';
 
 export default function OutsideWeater(props) {
-  const weatherIconsSrc = 'http://openweathermap.org/img/wn/';
+  const weatherIconsSrc = 'https://openweathermap.org/img/wn/';
   let description = props.description;
   let src;
   let updating;
