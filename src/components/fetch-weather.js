@@ -36,13 +36,13 @@ export function FetchWeather() {
       .then(response => response.json())
       .then(location => {
           if (!location.city && !location.countryCode) {
-            showAlert('We didn`t find your location. Use the search, please.');
             throw Error ('cant find "city" and "countryCode"');
           }
           city.current = location.city;
           country.current = location.countryCode
         })
       .catch(error => {
+          showAlert('We didn`t find your location. Use the search, please.');
           console.log(error);
         })
       .then(() => doRequest(city.current, country.current));
@@ -91,7 +91,7 @@ export function FetchWeather() {
 async function getWeather(city, country = '') {
   let data;
   try {
-    let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},${country}${METRIC_CELSIUS}&appid=${API_KEY}`);
+    let response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}${METRIC_CELSIUS}&appid=${API_KEY}`);
     data = await response.json();
 
     if (data.cod >= 400 || !data) {
